@@ -12,7 +12,7 @@ Además, el código incluye comentarios que explican varias secciones del códig
 
 | Uso | Descripción |Imagen  | 
 |-------------------|-------------|-------------|
-| calj | mes actual |![texto_alternativo](img/mes.jpg)|
-| calj -3| calendario tres meses       |![texto_alternativo](img/3mes.jpg)| 
-| calj 2023 | año escrito|![texto_alternativo](img/12mes.jpg)|
+| calj | mes actual |![texto_alternativo](images/mes.png)|
+| calj -3| calendario tres meses       |![texto_alternativo](images/mes3.png)| 
+| calj 2023 | año escrito|![texto_alternativo](images/mes12.png)|
 

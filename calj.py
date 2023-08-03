@@ -313,12 +313,12 @@ else:
 	
 	
 #para compilar y probar se usa:
-#C:\Users\JAC\AppData\Local\Programs\Python\Python311\python D:\dist\calj3bd.py
+#C:\Users\JAC\AppData\Local\Programs\Python\Python311\python D:\dist\calj.py
 #
 #para volverlo ejecutable:
 #pyinstaller :
-#C:\Users\JAC\AppData\Local\Programs\Python\Python311\Scripts\pyinstaller --onefile D:\dist\calj3bd.py
+#C:\Users\JAC\AppData\Local\Programs\Python\Python311\Scripts\pyinstaller --onefile D:\dist\calj.py
 
 # si jode por:   ImportError: No module named _bootlocale
 # usar:
-# pyinstaller --exclude-module _bootlocale --onefile  calj2.py
+# pyinstaller --exclude-module _bootlocale --onefile  calj.py

@@ -8,7 +8,7 @@ El programa comienza inicializando Colorama y cargando los días festivos desde 
 
 Además, el código incluye comentarios que explican varias secciones del código y proporciona instrucciones sobre cómo compilar y ejecutar el script.
 
-##USO desde consola
+## USO desde consola
 
 | Uso | Descripción |Imagen  | 
 |-------------------|-------------|-------------|

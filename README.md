@@ -10,9 +10,9 @@ Además, el código incluye comentarios que explican varias secciones del códig
 
 ## USO desde consola
 
-| Uso | Descripción |Imagen  | 
+| Ejemplo | Descripción |Imagen  | 
 |-------------------|-------------|-------------|
-| calj | mes actual |![texto_alternativo](images/mes.png)|
-| calj -3| calendario tres meses       |![texto_alternativo](images/mes3.png)| 
-| calj 2023 | año escrito|![texto_alternativo](images/mes12.png)|
+| calj | mes actual |![texto_alternativo](img/mes.png)|
+| calj -3| calendario tres meses       |![texto_alternativo](img/mes3.png)| 
+| calj 2023 | año escrito|![texto_alternativo](img/mes12.png)|
 

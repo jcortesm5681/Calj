@@ -5,14 +5,9 @@ from datetime import datetime, date, time, timedelta
 import calendar
 import sys
 from colorama import Cursor, init, Fore, Back, Style
-
-
 import sqlite3
-#import os
+import re
 
-#wd = os.getcwd()
-#print("DB directory is ", wd+"\Festivus.db")
- 
 
 #--------------------------------------------------------------
 # DECLARACION VARIABLES GLOBALES
@@ -20,8 +15,10 @@ import sqlite3
 now = datetime.now()
 #now= datetime.strptime('31/12/2020', '%d/%m/%Y')
 
-months = ("   Enero  ", "  Febrero ", "   Marzo  ", "   Abril  ", "   Mayo   ", "   Junio  ", "   Julio  ", "  Agosto  ", "Septiembre", "  Octubre ", "Noviembre", " Diciembre")
+months = ("Enero".center(20), "Febrero".center(20), "Marzo".center(20), "Abril".center(20), "Mayo".center(20), "Junio".center(20), "Julio".center(20), "Agosto".center(20), "Septiembre".center(20), "Octubre".center(20), "Noviembre".center(20), "Diciembre".center(20))
 #days   = ("Do", "Lu", "Ma", "Mc", "Ju", "Vi", "Sa");
+
+
 
 
 festivos = ["  "]; #inicializar lista de festivos
@@ -32,15 +29,18 @@ festivos = ["  "]; #inicializar lista de festivos
 #--------------------------------------------------------------
 def embellecedor(diaD):
 	try:
-		diaD=diaD.replace("01", " 1")
-		diaD=diaD.replace("02", " 2")
-		diaD=diaD.replace("03", " 3")
-		diaD=diaD.replace("04", " 4")
-		diaD=diaD.replace("05", " 5")
-		diaD=diaD.replace("06", " 6")
-		diaD=diaD.replace("07", " 7")
-		diaD=diaD.replace("08", " 8")
-		diaD=diaD.replace("09", " 9")
+		#diaD=diaD.replace("01", " 1")
+		#diaD=diaD.replace("02", " 2")
+		#diaD=diaD.replace("03", " 3")
+		#diaD=diaD.replace("04", " 4")
+		#diaD=diaD.replace("05", " 5")
+		#diaD=diaD.replace("06", " 6")
+		#diaD=diaD.replace("07", " 7")
+		#diaD=diaD.replace("08", " 8")
+		#diaD=diaD.replace("09", " 9")
+		#diaD.zfill(2)
+		# Utilizar una expresión regular para reemplazar '0' seguido de un dígito con ese dígito
+		diaD= re.sub(r'0(\d)', r' \1', diaD)
 	except: resp="  "
 	return diaD
 
@@ -81,22 +81,23 @@ def isFestivus(diaD):
 
 
 def titles(ArrayMonths):
-	title  = '    '# 
+	title  = ''# 
 	title2 = ''# 
 	if len(ArrayMonths) == 1 :  # número de meses a pintar será 1 o 3; por ahora no se plantea otro
 		dt1= ArrayMonths[0];
 		month = months[dt1.month - 1]
 		year = dt1.year
-		messsage = "{} {}".format(month, year)
-		longitud = len(messsage)
-		espacios = ' ' * int(10-(longitud/2))
-		messsage = "{}{} {}".format(espacios,month, year)
-		print ( Style.BRIGHT +Fore.GREEN + messsage+ Style.RESET_ALL)
+		#messsage = "{} {}".format(month, year)
+		#longitud = len(messsage)
+		#espacios = ' ' * int(10-(longitud/2))
+		#messsage = "{}{} {}".format(espacios,month, year)
+		messsage= month.strip() + ' ' +str(year);
+		print ( Style.BRIGHT +Fore.GREEN + messsage.center(20)+ Style.RESET_ALL)
 		title2 = title2+ "Do Lu Ma Mc Ju Vi Sa      "
 		print(Style.BRIGHT +title2+ Style.RESET_ALL)
 	else:		#entra por 3
 		for M in ArrayMonths:
-			title  = title + months[M.month - 1]+"                 "
+			title  = title + months[M.month - 1]+"      "			
 			title2 = title2+ "Do Lu Ma Mc Ju Vi Sa      "
 		print ( Style.BRIGHT +Fore.GREEN + title+ Style.RESET_ALL)
 		print(Style.BRIGHT +title2+ Style.RESET_ALL)
@@ -137,7 +138,7 @@ def month_array(date):
 				#print(len(str(numerodeldia)))
 				if numerodeldia <= monthRange[1]: numerodeldia = numerodeldia + 1
 				else: col[x]= '  '
-
+	#print(col)
 	n = 6 #semanas
 	m = 7 #dias
 	a = []	
@@ -151,14 +152,14 @@ def month_array(date):
 
 def printByLine(ArrayMonths):
 	mespintar    = []#inicializar lista
-	semanapintar = []
+	#semanapintar = []
 	week = []
-	w = ''
+	#w = ''
 	for M in ArrayMonths:
 		mespintar.append ( month_array(M))#
 		#t1=str(M)
 		#t1=t1[0:10]
-		#print (M)
+		#print (mespintar)
 	for N in mespintar:
 		#print (N)
 		for y in range (6):
@@ -234,8 +235,7 @@ def printByLine(ArrayMonths):
 			
 			week.append("")
 			week[y] = week[y]+m1separador0+embellecedor(N[y][0][0:2])+m1separador1  +" " +embellecedor(N[y][1][0:2])+m1separador2 +" " + embellecedor(N[y][2][0:2])+m1separador3 +" " + embellecedor(N[y][3][0:2])+m1separador4 +" " + embellecedor(N[y][4][0:2])+m1separador5 +" " + embellecedor(N[y][5][0:2])+m1separador6 +" " + embellecedor(N[y][6][0:2])+m1separador7 +"      "
-				
-
+		
 	for O in week:
 		if(O!=""):print (O)
 	 		
@@ -251,7 +251,7 @@ def calj_month(ArrayMonths):
 	
 def calj_year(year):
 	print()
-	print("                                  "+ Style.BRIGHT +Fore.RED + year+ Style.RESET_ALL)
+	print(Style.BRIGHT +Fore.RED + year.center(72)+ Style.RESET_ALL)
 	print()
 	
 	#inicializar lista de fechas a pintar, enviando por trimestre

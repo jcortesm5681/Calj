@@ -1,10 +1,15 @@
 # Calj
-Código de un calendario en consola a color y resalta los días festivos de Colombia
+**Calj** es una aplicación de consola en Python que genera calendarios anuales o mensuales con los festivos oficiales de Colombia, calculados automáticamente según la Ley 51 de 1983 (Ley Emiliani) y fechas religiosas basadas en la Pascua. No requiere conexión a internet ni base de datos externa.
 Es una re-creación del comando UNIX cal; pero a color y con festivos.
 
-El código genera un calendario en la consola para el mes actual o un año específico, utilizando la biblioteca Colorama para obtener una salida en colores.
+## Características
 
-El programa comienza inicializando Colorama y cargando los días festivos desde la base de datos SQLite. Luego analiza los argumentos de línea de comandos para determinar si se debe mostrar el calendario para el mes actual, un año específico o un período de tres meses. El calendario se imprime en la consola, resaltando la fecha de hoy en azul y marcando los días festivos en rojo.
+- Calcula festivos colombianos desde 1984 en adelante.
+- Colorea domingos y festivos en rojo, y el día actual en azul.
+- Muestra calendarios mensuales, anuales o de 3 meses.
+- Funciona completamente offline.
+- Compatible con Windows y Linux.
+- Puede compilarse como `.exe` con ícono personalizado.
 
 Además, el código incluye comentarios que explican varias secciones del código y proporciona instrucciones sobre cómo compilar y ejecutar el script.
 
